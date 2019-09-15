@@ -1,0 +1,3 @@
+Creare un programma in linguaggio C che legga il file vgsales.csv e lo importi in un array di strutture.
+Ogni riga contiene i campi separati da virgole, per cui può essere comodo creare una funzione split 
+che dalla riga letta ritorni la struttura valorizzata.
