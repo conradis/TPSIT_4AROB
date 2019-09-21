@@ -2,6 +2,7 @@
 #include<stdlib.h>
 #include<string.h>
 
+#define DELIM ","
 #define NGAMES 16600    //numero di giochi massimi
 #define NAME 30     //numero di caratterri per il nome del gioco
 const char SEP = ','; //carattere separatore
@@ -31,10 +32,13 @@ main(){
 
     //carico la tabella da file
     loadTabFromFile(fileN,list);
+
 }
+
 
 void loadTabFromFile(char n[], Game list[]){
     char c;
+    char forwhile[NAME];
     FILE *fp;
     int k=0;
 
@@ -44,9 +48,20 @@ void loadTabFromFile(char n[], Game list[]){
         printf("File %s inesistente\n" , n);
         getch();
     }else{
-        while(fgets(fp,"%d")!=EOF){            //controllo!!
-
+        while(fgets(fp, "s", list)!=NULL){
+            list[k].rank=(int)strtok(list, DELIM);
+            list[k].name[NAME]=(char)strtok(NULL, DELIM);
+            list[k].platform[NAME]=(char)strtok(NULL, DELIM);
+            list[k].year=(int)strtok(NULL, DELIM);
+            list[k].genre[NAME]=(char)strtok(NULL, DELIM);
+            list[k].publisher[NAME]=(char)strtok(NULL, DELIM);
+            list[k].NA_Sales=(float)strtok(NULL, DELIM);
+            list[k].EU_Sales=(float)strtok(NULL, DELIM);
+            list[k].JP_Sales=(float)strtok(NULL, DELIM);
+            list[k].Other_Sales=(float)strtok(NULL, DELIM);
+            list[k].Global_Sales=(float)strtok(NULL, DELIM);
         }
+
     }
 
     fclose(fp);
